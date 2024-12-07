@@ -26,21 +26,21 @@ void Game::Run()
         configurationsCleaner.CleanUp(window, context);
         return;
     }
-
+    bricksRepository.CreateBricks(NUM_ROWS, NUM_COLS, BRICK_WIDTH, BRICK_HEIGHT);
     GameLoop();
 }
 
 void Game::GameLoop()
 {
-    bool running = true;
+    bool isRunning = true;
     SDL_Event event;
 
-    while (running) 
+    while (isRunning) 
     {
         while (SDL_PollEvent(&event)) 
         {
             if (event.type == SDL_QUIT) 
-                running = false;
+                isRunning = false;
 
             else if(event.type == SDL_KEYDOWN)
             {
@@ -69,6 +69,8 @@ void Game::Render()
     //Drawing paddle
     glColor3f(0.0f, 0.3f, 1.0f);
     ShapesDrawer::DrawRectangle(paddleX, paddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+
+    ShapesDrawer::DrawBricks(bricksRepository.getBricks(), BRICK_WIDTH, BRICK_HEIGHT);
 
     SDL_GL_SwapWindow(SDL_GL_GetCurrentWindow());
 }

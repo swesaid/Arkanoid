@@ -8,6 +8,7 @@
 #include "Game/GameConfigurator.hpp"
 #include "Game/GameConfigurationsCleaner.hpp"
 #include "Shapes/ShapesDrawer.hpp"
+#include "Data/BricksRepository.hpp"
 
 class Game
 {
@@ -16,16 +17,25 @@ class Game
         const int SCREEN_HEIGHT = 600;
         const int PADDLE_WIDTH = 100;
         const int PADDLE_HEIGHT = 20;
+        
+        //Bricks
+        const int BRICK_WIDTH = 60;
+        const int BRICK_HEIGHT = 20;  
+        const int NUM_ROWS = 5;
+        const int NUM_COLS = 10;      
     
-        //Game objects
+        //Paddle
         float paddleX = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
         float paddleY = SCREEN_HEIGHT - 50;
+
 
         SDL_Window* window = nullptr;
         SDL_GLContext context = nullptr;
 
+        //Dependencies
         GameConfigurator gameConfigurator;
         GameConfigurationsCleaner configurationsCleaner;
+        BricksRepository bricksRepository;
 
         void GameLoop();        
         void Render();

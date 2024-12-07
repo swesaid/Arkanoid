@@ -2,6 +2,9 @@
 #define SHAPES_DRAWER_HPP
 
 #include <iostream>
+#include <SDL2/SDL.h>
+#include <GL/glew.h>
+#include "Shapes/Brick.hpp"
 
 class ShapesDrawer
 {
@@ -9,6 +12,7 @@ class ShapesDrawer
         ShapesDrawer() = delete;
 
         static void DrawRectangle(float x, float y, float width, float height);
+        static void DrawBricks(std::vector <Brick> bricks, int brickWidth, int brickHeight);
 
 };
 
