@@ -1,3 +1,7 @@
+#ifndef GAMECONFIGURATOR_HPP
+#define GAMECONFIGURATOR_HPP
+
+
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <iostream>
@@ -11,3 +15,5 @@ class GameConfigurator
         bool IntializeOpenGL(int width, int height);
         
 };
+
+#endif
