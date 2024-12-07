@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "Game/GameConfigurator.hpp"
+#include "Game/GameConfigurationsCleaner.hpp"
 #include "Shapes/ShapesDrawer.hpp"
 
 class Game
@@ -24,20 +25,15 @@ class Game
         SDL_GLContext context = nullptr;
 
         GameConfigurator gameConfigurator;
+        GameConfigurationsCleaner configurationsCleaner;
 
-        void CleanUp();
-
-        void GameLoop();
-        
+        void GameLoop();        
         void Render();
     
     public:
-        Game(GameConfigurator gameConfigurator);
+        Game(GameConfigurator gameConfigurator, GameConfigurationsCleaner configurationsCleaner);
         ~Game();
         void Run();   
 };
-
-
-
 
 #endif

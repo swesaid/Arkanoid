@@ -1,13 +1,15 @@
 #include "Game.hpp"
 
-Game::Game(GameConfigurator gameConfigurator) 
+Game::Game(GameConfigurator gameConfigurator, 
+           GameConfigurationsCleaner configurationsCleaner) 
 {
     this -> gameConfigurator = gameConfigurator;
+    this -> configurationsCleaner = configurationsCleaner;
 }
 
 Game::~Game() 
 {
-    CleanUp();
+    configurationsCleaner.CleanUp(window, context);
 }
 
 void Game::Run()
@@ -21,21 +23,11 @@ void Game::Run()
     if (!gameConfigurator.IntializeOpenGL(SCREEN_WIDTH, SCREEN_HEIGHT)) 
     {
         std::cerr << "Failed to initialize OpenGL" << std::endl;
-        CleanUp();
+        configurationsCleaner.CleanUp(window, context);
         return;
     }
 
     GameLoop();
-}
-
-void Game::CleanUp()
-{
-    if (context)
-        SDL_GL_DeleteContext(context);
-    if (window)
-        SDL_DestroyWindow(window);
-
-    SDL_Quit();
 }
 
 void Game::GameLoop()
