@@ -2,6 +2,8 @@
 
 int main(int argc, char *argv[]) 
 {
-    Game game = Game();
+    GameConfigurator gameConfigurator = GameConfigurator();
+
+    Game game = Game(gameConfigurator);
     game.Run();
 }

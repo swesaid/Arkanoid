@@ -5,6 +5,9 @@
 #include <GL/glew.h>
 #include <iostream>
 
+#include "Game/GameConfigurator.hpp"
+#include "Shapes/ShapesDrawer.hpp"
+
 class Game
 {
     private:
@@ -20,9 +23,8 @@ class Game
         SDL_Window* window = nullptr;
         SDL_GLContext context = nullptr;
 
+        GameConfigurator gameConfigurator;
 
-        bool InitializeSDL();
-        bool InitializeOpenGL();
         void CleanUp();
 
         void GameLoop();
@@ -30,7 +32,7 @@ class Game
         void Render();
     
     public:
-        Game();
+        Game(GameConfigurator gameConfigurator);
         ~Game();
         void Run();   
 };
