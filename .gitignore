@@ -41,3 +41,6 @@ build/
 
 # Local dependencies
 libs/
+
+#How to compile
+run.txt
