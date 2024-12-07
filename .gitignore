@@ -1,0 +1,43 @@
+# Build artifacts
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+*.exe
+*.out
+*.app
+
+# Debugging files
+*.gdb
+*.core
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+\#*\#
+*.xcworkspace
+*.xcuserdatad
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# CMake and Make build files
+Makefile
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+build/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Local dependencies
+libs/
