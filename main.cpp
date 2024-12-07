@@ -18,6 +18,8 @@ void Render();
 void CleanUp(SDL_Window *window, SDL_GLContext context);
 bool InitializeSDL(SDL_Window*& window, SDL_GLContext& context, int width, int height);
 bool InitializeOpenGL(SDL_Window* window, int width, int height);
+void GameLoop();
+
 
 
 int main(int argc, char *argv[]) 
@@ -34,38 +36,11 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    bool running = true;
-    SDL_Event event;
-
-    while (running) 
-    {
-        while (SDL_PollEvent(&event)) 
-        {
-            if (event.type == SDL_QUIT) 
-                running = false;
-
-            else if(event.type == SDL_KEYDOWN)
-            {
-                if(event.key.keysym.sym == SDLK_LEFT)
-                    paddleX -=20;
-                else if(event.key.keysym.sym == SDLK_RIGHT)
-                    paddleX += 20;
-            }
-        }
-
-        if (paddleX < 0) 
-            paddleX = 0;
-        
-        if (paddleX + PADDLE_WIDTH > SCREEN_WIDTH) 
-            paddleX = SCREEN_WIDTH - PADDLE_WIDTH;
-
-        Render();
-        SDL_Delay(16);
-
-    }
+    GameLoop();
 
     CleanUp(window, context);
 }
+
 
 void Render() 
 {
@@ -135,4 +110,37 @@ bool InitializeOpenGL(SDL_Window* window, int width, int height)
     gluOrtho2D(0, width, height, 0);
 
     return true;
+}
+
+void GameLoop()
+{
+    bool running = true;
+    SDL_Event event;
+
+    while (running) 
+    {
+        while (SDL_PollEvent(&event)) 
+        {
+            if (event.type == SDL_QUIT) 
+                running = false;
+
+            else if(event.type == SDL_KEYDOWN)
+            {
+                if(event.key.keysym.sym == SDLK_LEFT)
+                    paddleX -=20;
+                else if(event.key.keysym.sym == SDLK_RIGHT)
+                    paddleX += 20;
+            }
+        }
+
+        if (paddleX < 0) 
+            paddleX = 0;
+        
+        if (paddleX + PADDLE_WIDTH > SCREEN_WIDTH) 
+            paddleX = SCREEN_WIDTH - PADDLE_WIDTH;
+
+        Render();
+        SDL_Delay(16);
+
+    }
 }
