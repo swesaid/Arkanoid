@@ -57,6 +57,10 @@ void Game::GameLoop()
         if (paddleX + PADDLE_WIDTH > SCREEN_WIDTH) 
             paddleX = SCREEN_WIDTH - PADDLE_WIDTH;
 
+        ballX += ballDX;
+        ballY += ballDY;
+
+
         Render();
         SDL_Delay(16);
     }
@@ -69,6 +73,10 @@ void Game::Render()
     //Drawing paddle
     glColor3f(0.0f, 0.3f, 1.0f);
     ShapesDrawer::DrawRectangle(paddleX, paddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+
+    //Draw ball
+    glColor3f(1.0f, 1.0f, 0.0f);
+    ShapesDrawer::DrawRectangle(ballX, ballY, BALL_SIZE, BALL_SIZE);
 
     ShapesDrawer::DrawBricks(bricksRepository.getBricks(), BRICK_WIDTH, BRICK_HEIGHT);
 
