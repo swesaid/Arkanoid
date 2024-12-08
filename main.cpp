@@ -6,11 +6,13 @@ int main(int argc, char *argv[])
     GameConfigurationsCleaner configurationsCleaner = GameConfigurationsCleaner();
     BricksRepository bricksRepository = BricksRepository();
     Ball ball = Ball();
+    Brick brick = Brick();
 
     Game game = Game(gameConfigurator, 
                      configurationsCleaner, 
                      bricksRepository,
-                     ball);
+                     ball,
+                     brick);
     
     game.Run();
 }

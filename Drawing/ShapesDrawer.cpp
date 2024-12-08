@@ -14,13 +14,13 @@ void ShapesDrawer::DrawRectangle(float x, float y, float width, float height)
     glEnd();
 }
 
-void ShapesDrawer::DrawBricks(std::vector <Brick> bricks, int brickWidth, int brickHeight)
+void ShapesDrawer::DrawBricks(std::vector <Brick> bricks, const Brick &brick)
 {
     for (const auto &brick : bricks) 
-        if (brick.isActive) 
+        if (brick.getState()) 
         {
             glColor3f(1.0f, 0.0f, 0.0f);
-            DrawRectangle(brick.x, brick.y, brickWidth, brickHeight);
+            DrawRectangle(brick.getX(), brick.getY(), brick.getWidth(), brick.getHeight());
         }
     
 }

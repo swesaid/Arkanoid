@@ -16,12 +16,7 @@ class Game
     private:
         const int SCREEN_WIDTH = 800;
         const int SCREEN_HEIGHT = 600;
-        
-        //Bricks
-        const int BRICK_WIDTH = 60;
-        const int BRICK_HEIGHT = 20;  
-        const int NUM_ROWS = 5;
-        const int NUM_COLS = 10;      
+            
     
         //Paddle
         const int PADDLE_WIDTH = 100;
@@ -40,6 +35,7 @@ class Game
 
         //Objects
         Ball ball;
+        Brick brick;
 
         void GameLoop();        
         void Render();
@@ -48,7 +44,8 @@ class Game
         Game(GameConfigurator gameConfigurator, 
              GameConfigurationsCleaner configurationsCleaner,
              BricksRepository bricksRepository,
-             Ball ball);
+             Ball ball,
+             Brick brick);
         ~Game();
         void Run();   
 };
