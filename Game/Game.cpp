@@ -1,10 +1,12 @@
 #include "Game.hpp"
 
 Game::Game(GameConfigurator gameConfigurator, 
-           GameConfigurationsCleaner configurationsCleaner) 
+           GameConfigurationsCleaner configurationsCleaner,
+           BricksRepository bricksRepository) 
 {
     this -> gameConfigurator = gameConfigurator;
     this -> configurationsCleaner = configurationsCleaner;
+    this -> bricksRepository = bricksRepository;
 }
 
 Game::~Game() 

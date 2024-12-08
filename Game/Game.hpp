@@ -9,6 +9,7 @@
 #include "Game/GameConfigurationsCleaner.hpp"
 #include "Shapes/ShapesDrawer.hpp"
 #include "Data/BricksRepository.hpp"
+#include "Objects/Ball.hpp"
 
 class Game
 {
@@ -48,7 +49,9 @@ class Game
         void Render();
     
     public:
-        Game(GameConfigurator gameConfigurator, GameConfigurationsCleaner configurationsCleaner);
+        Game(GameConfigurator gameConfigurator, 
+             GameConfigurationsCleaner configurationsCleaner,
+             BricksRepository bricksRepository);
         ~Game();
         void Run();   
 };
