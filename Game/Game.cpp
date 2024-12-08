@@ -4,13 +4,15 @@ Game::Game(GameConfigurator gameConfigurator,
            GameConfigurationsCleaner configurationsCleaner,
            BricksRepository bricksRepository,
            Ball ball,
-           Brick brick)
+           Brick brick,
+           Paddle paddle)
 {
     this -> gameConfigurator = gameConfigurator;
     this -> configurationsCleaner = configurationsCleaner;
     this -> bricksRepository = std::move(bricksRepository);
     this -> ball = std::move(ball);
     this -> brick = std::move(brick);
+    this -> paddle = std::move(paddle);
 }
 
 Game::~Game() 
@@ -51,17 +53,17 @@ void Game::GameLoop()
             else if(event.type == SDL_KEYDOWN)
             {
                 if(event.key.keysym.sym == SDLK_LEFT)
-                    paddleX -=20;
+                    paddle.setX(paddle.getX() - 20);
                 else if(event.key.keysym.sym == SDLK_RIGHT)
-                    paddleX += 20;
+                    paddle.setX(paddle.getX() + 20);
             }
         }
 
-        if (paddleX < 0) 
-            paddleX = 0;
+        if (paddle.getX() < 0) 
+            paddle.setX(0);
         
-        if (paddleX + PADDLE_WIDTH > SCREEN_WIDTH) 
-            paddleX = SCREEN_WIDTH - PADDLE_WIDTH;
+        if (paddle.getX() + paddle.getWidth() > SCREEN_WIDTH) 
+            paddle.setX(SCREEN_WIDTH - paddle.getWidth());
 
         ball.setX(ball.getX() + ball.getDX());
         ball.setY(ball.getY() + ball.getDY());
@@ -77,7 +79,7 @@ void Game::Render()
 
     //Drawing paddle
     glColor3f(0.0f, 0.3f, 1.0f);
-    ShapesDrawer::DrawRectangle(paddleX, paddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+    ShapesDrawer::DrawRectangle(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight());
 
     //Draw ball
     glColor3f(1.0f, 1.0f, 0.0f);

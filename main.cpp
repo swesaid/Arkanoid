@@ -7,12 +7,14 @@ int main(int argc, char *argv[])
     BricksRepository bricksRepository = BricksRepository();
     Ball ball = Ball();
     Brick brick = Brick();
+    Paddle paddle = Paddle();
 
     Game game = Game(gameConfigurator, 
                      configurationsCleaner, 
                      bricksRepository,
                      ball,
-                     brick);
+                     brick, 
+                     paddle);
     
     game.Run();
 }

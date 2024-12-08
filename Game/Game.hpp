@@ -10,20 +10,14 @@
 #include "Drawing/ShapesDrawer.hpp"
 #include "Data/BricksRepository.hpp"
 #include "Objects/Ball.hpp"
+#include "Objects/Brick.hpp"
+#include "Objects/Paddle.hpp"
 
 class Game
 {
     private:
         const int SCREEN_WIDTH = 800;
         const int SCREEN_HEIGHT = 600;
-            
-    
-        //Paddle
-        const int PADDLE_WIDTH = 100;
-        const int PADDLE_HEIGHT = 20;
-        float paddleX = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
-        float paddleY = SCREEN_HEIGHT - 50;
-
 
         SDL_Window* window = nullptr;
         SDL_GLContext context = nullptr;
@@ -33,9 +27,10 @@ class Game
         GameConfigurationsCleaner configurationsCleaner;
         BricksRepository bricksRepository;
 
-        //Objects
+        //Game Objects
         Ball ball;
         Brick brick;
+        Paddle paddle;
 
         void GameLoop();        
         void Render();
@@ -45,7 +40,9 @@ class Game
              GameConfigurationsCleaner configurationsCleaner,
              BricksRepository bricksRepository,
              Ball ball,
-             Brick brick);
+             Brick brick,
+             Paddle paddle);
+
         ~Game();
         void Run();   
 };
