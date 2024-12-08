@@ -12,7 +12,7 @@ class BricksRepository
     public:
         BricksRepository();
         ~BricksRepository();
-        void CreateBricks(const Brick &brick);
+        void CreateBricks(const Brick &input);
         std::vector<Brick> getBricks() const;
 };
 

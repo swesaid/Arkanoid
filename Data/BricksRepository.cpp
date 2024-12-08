@@ -3,15 +3,15 @@
 BricksRepository::BricksRepository() {};
 BricksRepository::~BricksRepository() {};
 
-void BricksRepository::CreateBricks(const Brick &brick)
+void BricksRepository::CreateBricks(const Brick &input)
 {
     float startX = 50;
     float startY = 50;
 
-    for (int row = 0; row < brick.getRowsCount(); ++row) 
-        for (int col = 0; col < brick.getColsCount(); ++col) 
+    for (int row = 0; row < input.getRowsCount(); ++row) 
+        for (int col = 0; col < input.getColsCount(); ++col) 
         {
-            Brick brick = {startX + col * (brick.getWidth() + 10), startY + row * (brick.getHeight() + 10), true};
+            Brick brick = {startX + col * (input.getWidth() + 10), startY + row * (input.getHeight() + 10), true};
             bricks.push_back(brick);
         }
 }
