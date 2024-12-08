@@ -29,13 +29,6 @@ class Game
         float paddleX = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
         float paddleY = SCREEN_HEIGHT - 50;
 
-        //Ball
-        const int BALL_SIZE = 15;
-        float ballX = SCREEN_WIDTH / 2;
-        float ballY = SCREEN_HEIGHT / 2;
-        float ballDX = 3.0f;
-        float ballDY = -3.0f;
-
 
         SDL_Window* window = nullptr;
         SDL_GLContext context = nullptr;
@@ -45,13 +38,17 @@ class Game
         GameConfigurationsCleaner configurationsCleaner;
         BricksRepository bricksRepository;
 
+        //Objects
+        Ball ball;
+
         void GameLoop();        
         void Render();
     
     public:
         Game(GameConfigurator gameConfigurator, 
              GameConfigurationsCleaner configurationsCleaner,
-             BricksRepository bricksRepository);
+             BricksRepository bricksRepository,
+             Ball ball);
         ~Game();
         void Run();   
 };

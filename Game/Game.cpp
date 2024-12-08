@@ -2,11 +2,13 @@
 
 Game::Game(GameConfigurator gameConfigurator, 
            GameConfigurationsCleaner configurationsCleaner,
-           BricksRepository bricksRepository) 
+           BricksRepository bricksRepository,
+           Ball ball)
 {
     this -> gameConfigurator = gameConfigurator;
     this -> configurationsCleaner = configurationsCleaner;
-    this -> bricksRepository = bricksRepository;
+    this -> bricksRepository = std::move(bricksRepository);
+    this -> ball = std::move(ball);
 }
 
 Game::~Game() 
@@ -33,7 +35,7 @@ void Game::Run()
 }
 
 void Game::GameLoop()
-{
+{   
     bool isRunning = true;
     SDL_Event event;
 
@@ -59,10 +61,9 @@ void Game::GameLoop()
         if (paddleX + PADDLE_WIDTH > SCREEN_WIDTH) 
             paddleX = SCREEN_WIDTH - PADDLE_WIDTH;
 
-        ballX += ballDX;
-        ballY += ballDY;
-
-
+        ball.setX(ball.getX() + ball.getDX());
+        ball.setY(ball.getY() + ball.getDY());
+        
         Render();
         SDL_Delay(16);
     }
@@ -78,7 +79,7 @@ void Game::Render()
 
     //Draw ball
     glColor3f(1.0f, 1.0f, 0.0f);
-    ShapesDrawer::DrawRectangle(ballX, ballY, BALL_SIZE, BALL_SIZE);
+    ShapesDrawer::DrawRectangle(ball.getX(), ball.getY(), ball.getSize(), ball.getSize());
 
     ShapesDrawer::DrawBricks(bricksRepository.getBricks(), BRICK_WIDTH, BRICK_HEIGHT);
 
