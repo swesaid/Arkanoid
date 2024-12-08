@@ -1,4 +1,4 @@
-#include "Shapes/Brick.hpp"
+#include "Objects/Brick.hpp"
 
 Brick::Brick(float x,  float y, bool isActive)
 {

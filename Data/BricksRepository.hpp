@@ -2,7 +2,7 @@
 #define BRICKSREPOSITORY_HPP
 
 #include <vector>
-#include "Shapes/Brick.hpp"
+#include "Objects/Brick.hpp"
 
 class BricksRepository
 {

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
-#include "Shapes/Brick.hpp"
+#include "Objects/Brick.hpp"
 
 class ShapesDrawer
 {
