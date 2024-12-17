@@ -5,8 +5,8 @@
 #include <GL/glew.h>
 #include <iostream>
 
-#include "Game/GameConfigurator.hpp"
-#include "Game/GameConfigurationsCleaner.hpp"
+#include "Configurations/GameConfigurator.hpp"
+#include "Configurations/GameConfigurationsCleaner.hpp"
 #include "Graphics/ShapesDrawer.hpp"
 #include "Data/BricksRepository.hpp"
 #include "Objects/Ball.hpp"

@@ -1,4 +1,4 @@
-#include "Game/GameConfigurator.hpp"
+#include "Configurations/GameConfigurator.hpp"
 
 GameConfigurator::GameConfigurator() {}
 
