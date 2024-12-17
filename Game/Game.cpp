@@ -85,7 +85,7 @@ void Game::Render()
     glColor3f(1.0f, 1.0f, 0.0f);
     ShapesDrawer::DrawRectangle(ball.getX(), ball.getY(), ball.getSize(), ball.getSize());
 
-    ShapesDrawer::DrawBricks(bricksRepository.getBricks(), brick);
+    ShapesDrawer::DrawBricks(bricksRepository.getBricks());
 
     SDL_GL_SwapWindow(SDL_GL_GetCurrentWindow());
 }

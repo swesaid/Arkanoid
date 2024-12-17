@@ -14,7 +14,7 @@ void ShapesDrawer::DrawRectangle(float x, float y, float width, float height)
     glEnd();
 }
 
-void ShapesDrawer::DrawBricks(std::vector <Brick> bricks, const Brick &brick)
+void ShapesDrawer::DrawBricks(const std::vector <Brick> &bricks)
 {
     for (const auto &brick : bricks) 
         if (brick.getState()) 
