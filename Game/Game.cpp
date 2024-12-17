@@ -2,6 +2,7 @@
 
 Game::Game(GameConfigurator gameConfigurator, 
            GameConfigurationsCleaner configurationsCleaner,
+           GraphicsRenderer graphicsRenderer,
            BricksRepository bricksRepository,
            Ball ball,
            Brick brick,
@@ -9,6 +10,7 @@ Game::Game(GameConfigurator gameConfigurator,
 {
     this -> gameConfigurator = gameConfigurator;
     this -> configurationsCleaner = configurationsCleaner;
+    this -> graphicsRenderer = graphicsRenderer;
     this -> bricksRepository = std::move(bricksRepository);
     this -> ball = std::move(ball);
     this -> brick = std::move(brick);
@@ -68,24 +70,7 @@ void Game::GameLoop()
         ball.setX(ball.getX() + ball.getDX());
         ball.setY(ball.getY() + ball.getDY());
 
-        Render();
+        graphicsRenderer.Render(paddle, ball, bricksRepository.getBricks());
         SDL_Delay(16);
     }
-}
-
-void Game::Render()
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    //Drawing paddle
-    glColor3f(0.0f, 0.3f, 1.0f);
-    ShapesDrawer::DrawRectangle(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight());
-
-    //Draw ball
-    glColor3f(1.0f, 1.0f, 0.0f);
-    ShapesDrawer::DrawRectangle(ball.getX(), ball.getY(), ball.getSize(), ball.getSize());
-
-    ShapesDrawer::DrawBricks(bricksRepository.getBricks());
-
-    SDL_GL_SwapWindow(SDL_GL_GetCurrentWindow());
 }

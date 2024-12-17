@@ -8,6 +8,7 @@
 #include "Configurations/GameConfigurator.hpp"
 #include "Configurations/GameConfigurationsCleaner.hpp"
 #include "Graphics/ShapesDrawer.hpp"
+#include "Graphics/GraphicsRenderer.hpp"
 #include "Data/BricksRepository.hpp"
 #include "Objects/Ball.hpp"
 #include "Objects/Brick.hpp"
@@ -26,6 +27,7 @@ class Game
         GameConfigurator gameConfigurator;
         GameConfigurationsCleaner configurationsCleaner;
         BricksRepository bricksRepository;
+        GraphicsRenderer graphicsRenderer;
 
         //Game Objects
         Ball ball;
@@ -33,11 +35,11 @@ class Game
         Paddle paddle;
 
         void GameLoop();        
-        void Render();
     
     public:
         Game(GameConfigurator gameConfigurator, 
              GameConfigurationsCleaner configurationsCleaner,
+             GraphicsRenderer GraphicsRenderer,
              BricksRepository bricksRepository,
              Ball ball,
              Brick brick,
