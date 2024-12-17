@@ -7,7 +7,7 @@
 
 #include "Game/GameConfigurator.hpp"
 #include "Game/GameConfigurationsCleaner.hpp"
-#include "Drawing/ShapesDrawer.hpp"
+#include "Graphics/ShapesDrawer.hpp"
 #include "Data/BricksRepository.hpp"
 #include "Objects/Ball.hpp"
 #include "Objects/Brick.hpp"
