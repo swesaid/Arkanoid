@@ -7,7 +7,7 @@
 class BricksRepository
 {
     private:
-        std::vector<Brick> bricks;
+        std::vector<Brick> _bricks;
     
     public:
         BricksRepository();

@@ -4,44 +4,44 @@ Brick::Brick() {};
 
 Brick::Brick(float x,  float y, bool isActive)
 {
-    this -> x = x;
-    this -> y = y;
-    this -> isActive = isActive;
+    _x = x;
+    _y = y;
+    _isActive = isActive;
 }
 
 Brick::~Brick() {};
 
 int Brick::getWidth() const
 {
-    return BRICK_WIDTH;
+    return _brickWidth;
 }
 
 int Brick::getHeight() const
 {
-    return BRICK_HEIGHT;
+    return _brickHeight;
 }
 
 int Brick::getRowsCount() const
 {
-    return NUM_ROWS;
+    return _numberOfRows;
 }
 
 int Brick::getColsCount() const
 {
-    return NUM_COLS;
+    return _numberOfColumns;
 }
 
 float Brick::getX() const
 {
-    return x;
+    return _x;
 }
 
 float Brick::getY() const
 {
-    return y;
+    return _y;
 }
 
 bool Brick::getState() const
 {
-    return isActive;
+    return _isActive;
 }

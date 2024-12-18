@@ -7,17 +7,17 @@ GameLoopManager::GameLoopManager(Ball ball,
                                  GraphicsRenderer graphicsRenderer,
                                  BricksRepository bricksRepository) 
 {
-    this -> ball = std::move(ball);
-    this -> brick = std::move(brick);
-    this -> paddle = std::move(paddle);
-    this -> graphicsRenderer = std::move(graphicsRenderer);
-    this -> bricksRepository = std::move(bricksRepository);
+    _ball = std::move(ball);
+    _brick = std::move(brick);
+    _paddle = std::move(paddle);
+    _graphicsRenderer = std::move(graphicsRenderer);
+    _bricksRepository = std::move(bricksRepository);
 }
 GameLoopManager::~GameLoopManager() {}
 
 void GameLoopManager::Start(int screenWidth)
 {
-    bricksRepository.CreateBricks(brick);
+    _bricksRepository.CreateBricks(_brick);
     
     bool isRunning = true;
     SDL_Event event;
@@ -32,22 +32,22 @@ void GameLoopManager::Start(int screenWidth)
             else if(event.type == SDL_KEYDOWN)
             {
                 if(event.key.keysym.sym == SDLK_LEFT)
-                    paddle.setX(paddle.getX() - 20);
+                    _paddle.setX(_paddle.getX() - 20);
                 else if(event.key.keysym.sym == SDLK_RIGHT)
-                    paddle.setX(paddle.getX() + 20);
+                    _paddle.setX(_paddle.getX() + 20);
             }
         }
 
-        if (paddle.getX() < 0) 
-            paddle.setX(0);
+        if (_paddle.getX() < 0) 
+            _paddle.setX(0);
         
-        if (paddle.getX() + paddle.getWidth() > screenWidth) 
-            paddle.setX(screenWidth - paddle.getWidth());
+        if (_paddle.getX() + _paddle.getWidth() > screenWidth) 
+            _paddle.setX(screenWidth - _paddle.getWidth());
 
-        ball.setX(ball.getX() + ball.getDX());
-        ball.setY(ball.getY() + ball.getDY());
+        _ball.setX(_ball.getX() + _ball.getDX());
+        _ball.setY(_ball.getY() + _ball.getDY());
 
-        graphicsRenderer.Render(paddle, ball, bricksRepository.getBricks());
+        _graphicsRenderer.Render(_paddle, _ball, _bricksRepository.getBricks());
         SDL_Delay(16);
     }
 }

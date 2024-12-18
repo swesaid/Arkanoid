@@ -4,12 +4,12 @@
 class Paddle
 {
     private:
-        int SCREEN_WIDTH = 800;
-        int SCREEN_HEIGHT = 600;
-        int PADDLE_WIDTH = 100;
-        int PADDLE_HEIGHT = 20;
-        float paddleX = SCREEN_WIDTH / 2 - PADDLE_WIDTH / 2;
-        float paddleY = SCREEN_HEIGHT - 50;
+        int _screenWidth = 800;
+        int _screenHeight = 600;
+        int _paddleWidth = 100;
+        int _paddleHeight = 20;
+        float _paddleX = _screenWidth / 2 - _paddleWidth / 2;
+        float _paddleY = _screenHeight - 50;
 
     public:
         Paddle();
@@ -19,7 +19,7 @@ class Paddle
         float getX() const;
         float getY() const;
 
-        void setX(float x); 
+        void setX(float paddleX); 
 
         
 };

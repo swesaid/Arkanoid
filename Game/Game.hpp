@@ -12,10 +12,10 @@
 class Game
 {
     private:
-        const int SCREEN_WIDTH = 800;
-        const int SCREEN_HEIGHT = 600;
-        SDL_Window* window = nullptr;
-        SDL_GLContext context = nullptr;
+        const int _screenWidth = 800;
+        const int _screenHeight = 600;
+        SDL_Window* _window = nullptr;
+        SDL_GLContext _context = nullptr;
 
         //Dependencies
         GameConfigurator _gameConfigurator;

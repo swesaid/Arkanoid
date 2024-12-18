@@ -1,7 +1,6 @@
 #include "Configurations/GameConfigurator.hpp"
 
 GameConfigurator::GameConfigurator() {}
-
 GameConfigurator::~GameConfigurator() {}
 
 

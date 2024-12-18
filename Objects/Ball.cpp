@@ -5,35 +5,35 @@ Ball::~Ball() {};
         
 float Ball::getX() const
 {
-    return ballX;
+    return _ballX;
 }
 
 float Ball::getY() const
 {
-    return ballY;
+    return _ballY;
 }
 
 float Ball::getDX() const
 {
-    return ballDX;
+    return _ballDX;
 }
 
 float Ball::getDY() const
 {
-    return ballDY;
+    return _ballDY;
 }
 
 int Ball::getSize() const
 {
-    return BALL_SIZE;
+    return _ballSize;
 }
 
-void Ball::setX(float x)
+void Ball::setX(float ballX)
 {
-    ballX = x;
+    _ballX = ballX;
 }
 
-void Ball::setY(float y)
+void Ball::setY(float ballY)
 {
-    ballY = y;
+    _ballY = ballY;
 }

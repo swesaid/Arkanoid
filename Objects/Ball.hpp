@@ -4,14 +4,14 @@
 class Ball
 {
     private:
-        int SCREEN_WIDTH = 800;
-        int SCREEN_HEIGHT = 600;
+        int _screenWidth = 800;
+        int _screenHeight = 600;
         
-        int BALL_SIZE = 15;
-        float ballX = SCREEN_WIDTH / 2;
-        float ballY = SCREEN_HEIGHT / 2;
-        float ballDX = 3.0f;
-        float ballDY = -3.0f;
+        int _ballSize = 15;
+        float _ballX = _screenWidth / 2;
+        float _ballY = _screenHeight / 2;
+        float _ballDX = 3.0f;
+        float _ballDY = -3.0f;
 
     public:
         Ball();
@@ -23,8 +23,8 @@ class Ball
         float getDY() const;
         int getSize() const;
 
-        void setX(float x);
-        void setY(float y);
+        void setX(float ballX);
+        void setY(float ballY);
 
 
 };

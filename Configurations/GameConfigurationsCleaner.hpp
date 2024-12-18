@@ -6,13 +6,10 @@
 
 class GameConfigurationsCleaner
 {
-    
-
     public:
         GameConfigurationsCleaner();
         ~GameConfigurationsCleaner();
         void CleanUp(SDL_Window *window, SDL_GLContext context);
-
 };
 
 #endif

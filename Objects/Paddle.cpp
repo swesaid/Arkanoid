@@ -5,26 +5,26 @@ Paddle::~Paddle() {};
 
 int Paddle::getWidth() const
 {
-    return PADDLE_WIDTH;
+    return _paddleWidth;
 }
 
 int Paddle::getHeight() const
 {
-    return PADDLE_HEIGHT;
+    return _paddleHeight;
 }
 
 float Paddle::getX() const
 {
-    return paddleX;
+    return _paddleX;
 }
 
 float Paddle::getY() const
 {
-    return paddleY;
+    return _paddleY;
 }
 
-void Paddle::setX(float x)
+void Paddle::setX(float paddleX)
 {
-    paddleX = x;
+    _paddleX = paddleX;
 }
 

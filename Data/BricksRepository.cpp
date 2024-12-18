@@ -12,12 +12,12 @@ void BricksRepository::CreateBricks(const Brick &input)
         for (int col = 0; col < input.getColsCount(); ++col) 
         {
             Brick brick = {startX + col * (input.getWidth() + 10), startY + row * (input.getHeight() + 10), true};
-            bricks.push_back(brick);
+            _bricks.push_back(brick);
         }
 }
 
 std::vector<Brick> BricksRepository::getBricks() const
 {
-    return bricks;
+    return _bricks;
 }
 

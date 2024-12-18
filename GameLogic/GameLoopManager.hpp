@@ -12,12 +12,15 @@
 class GameLoopManager
 {
     private:
-        Ball ball;
-        Brick brick;
-        Paddle paddle;
-        GraphicsRenderer graphicsRenderer;
-        BricksRepository bricksRepository;
+        
+        Ball _ball;
+        Brick _brick;
+        Paddle _paddle;
+        GraphicsRenderer _graphicsRenderer;
+        BricksRepository _bricksRepository;
+    
     public:
+        
         GameLoopManager(Ball ball,
                         Brick brick,
                         Paddle paddle,
@@ -26,9 +29,6 @@ class GameLoopManager
         
         ~GameLoopManager();
         void Start(int screenWidth);
-    
-
-
 };
 
 

@@ -4,13 +4,13 @@
 class Brick 
 {
     private:
-        int BRICK_WIDTH = 60;
-        int BRICK_HEIGHT = 20;  
-        int NUM_ROWS = 5;
-        int NUM_COLS = 10;  
-        float x;
-        float y;
-        bool isActive;
+        int _brickWidth = 60;
+        int _brickHeight = 20;  
+        int _numberOfRows = 5;
+        int _numberOfColumns = 10;  
+        float _x;
+        float _y;
+        bool _isActive;
 
     public:
         Brick();

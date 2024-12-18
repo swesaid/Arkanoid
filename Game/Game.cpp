@@ -13,17 +13,17 @@ Game::Game(GameConfigurator gameConfigurator,
 
 Game::~Game() 
 {
-    _configurationsCleaner.CleanUp(window, context);
+    _configurationsCleaner.CleanUp(_window, _context);
 }
 
 void Game::Run()
  {
-    if (!_gameConfigurator.IsConfigured(window, context, SCREEN_WIDTH, SCREEN_HEIGHT)) 
+    if (!_gameConfigurator.IsConfigured(_window, _context, _screenWidth, _screenHeight)) 
     {
         std::cerr << "Failed to configure." << std::endl;
-        _configurationsCleaner.CleanUp(window, context);
+        _configurationsCleaner.CleanUp(_window, _context);
         return;
     }
     
-    _gameLoopManager.Start(SCREEN_WIDTH);
+    _gameLoopManager.Start(_screenWidth);
 }

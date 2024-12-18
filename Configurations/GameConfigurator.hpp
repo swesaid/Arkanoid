@@ -8,7 +8,6 @@
 
 class GameConfigurator
 {
-
     public:
         GameConfigurator();
         ~GameConfigurator();
