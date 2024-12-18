@@ -9,7 +9,8 @@ int main(int argc, char *argv[])
     Ball ball = Ball();
     Brick brick = Brick();
     Paddle paddle = Paddle();
-    GameLoopManager gameLoopManager = GameLoopManager(ball, brick, paddle, graphicsRenderer, bricksRepository);
+    CollisionHandler collisionHandler = CollisionHandler();
+    GameLoopManager gameLoopManager = GameLoopManager(ball, brick, paddle, graphicsRenderer, bricksRepository, collisionHandler);
 
     Game game = Game(gameConfigurator, 
                      configurationsCleaner,

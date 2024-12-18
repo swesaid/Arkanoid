@@ -25,3 +25,8 @@ bool Brick::getState() const
 {
     return _isActive;
 }
+
+void Brick::setState(bool state)
+{
+    _isActive = state;
+}

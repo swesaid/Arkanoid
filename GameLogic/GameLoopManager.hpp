@@ -8,6 +8,7 @@
 #include "Objects/Paddle.hpp"
 #include "Graphics/GraphicsRenderer.hpp"
 #include "Data/BricksRepository.hpp"
+#include "GameLogic/CollisionHandler.hpp"
 
 class GameLoopManager
 {
@@ -18,6 +19,7 @@ class GameLoopManager
         Paddle _paddle;
         GraphicsRenderer _graphicsRenderer;
         BricksRepository _bricksRepository;
+        CollisionHandler _collisionHandler;
     
     public:
         
@@ -25,7 +27,8 @@ class GameLoopManager
                         Brick brick,
                         Paddle paddle,
                         GraphicsRenderer graphicsRenderer,
-                        BricksRepository bricksRepository);
+                        BricksRepository bricksRepository,
+                        CollisionHandler collisionHandler);
         
         ~GameLoopManager();
         void Start(int screenWidth);

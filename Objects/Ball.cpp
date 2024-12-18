@@ -37,3 +37,8 @@ void Ball::setY(float ballY)
 {
     _ballY = ballY;
 }
+
+void Ball::setDY(float ballDY)
+{
+    _ballDY = ballDY;
+}

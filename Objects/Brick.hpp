@@ -16,6 +16,7 @@ class Brick
         float getX() const;
         float getY() const;
         bool getState() const;
+        void setState(bool state);
 
 };
 
