@@ -15,7 +15,7 @@ class CollisionHandler
         CollisionHandler();
         ~CollisionHandler();
         void HandleCollisions(Paddle &paddle, Ball &ball, std::vector<Brick> &bricks);
-
+        void HandleBallAndWallCollision(Ball &ball);
 };
 
 #endif
