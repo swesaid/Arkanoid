@@ -6,6 +6,7 @@ CollisionHandler::~CollisionHandler() {}
 
 void CollisionHandler::HandleCollisions(Paddle &paddle, Ball &ball, std::vector<Brick> &bricks)
 {
+    HandleBallAndPaddleCollision(ball, paddle);
     HandleBallAndWallCollision(ball);
     HandleBallAndBrickCollision(ball, bricks);
 }
@@ -38,4 +39,15 @@ void CollisionHandler::HandleBallAndWallCollision(Ball &ball)
         ball.setDX(-ball.getDX());
     if(ball.getY() <=0)
         ball.setDY(-ball.getDY());
+}
+
+void CollisionHandler::HandleBallAndPaddleCollision(Ball &ball, Paddle &paddle)
+{
+
+    if (ball.getX() + ball.getSize() > paddle.getX() && ball.getX() < paddle.getX() + paddle.getWidth() &&
+        ball.getY() + ball.getSize() > paddle.getY() && ball.getY() < paddle.getY() + paddle.getHeight()) 
+    {
+        ball.setDY(-ball.getDY());
+        ball.setY(paddle.getY() - ball.getSize());
+    }
 }
