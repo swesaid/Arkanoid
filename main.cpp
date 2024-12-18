@@ -9,14 +9,11 @@ int main(int argc, char *argv[])
     Ball ball = Ball();
     Brick brick = Brick();
     Paddle paddle = Paddle();
+    GameLoopManager gameLoopManager = GameLoopManager(ball, brick, paddle, graphicsRenderer, bricksRepository);
 
     Game game = Game(gameConfigurator, 
                      configurationsCleaner,
-                     graphicsRenderer, 
-                     bricksRepository,
-                     ball,
-                     brick, 
-                     paddle);
+                     gameLoopManager);
     
     game.Run();
 }

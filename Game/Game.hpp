@@ -7,12 +7,7 @@
 
 #include "Configurations/GameConfigurator.hpp"
 #include "Configurations/GameConfigurationsCleaner.hpp"
-#include "Graphics/ShapesDrawer.hpp"
-#include "Graphics/GraphicsRenderer.hpp"
-#include "Data/BricksRepository.hpp"
-#include "Objects/Ball.hpp"
-#include "Objects/Brick.hpp"
-#include "Objects/Paddle.hpp"
+#include "GameLogic/GameLoopManager.hpp"
 
 class Game
 {
@@ -24,26 +19,15 @@ class Game
         SDL_GLContext context = nullptr;
 
         //Dependencies
-        GameConfigurator gameConfigurator;
-        GameConfigurationsCleaner configurationsCleaner;
-        BricksRepository bricksRepository;
-        GraphicsRenderer graphicsRenderer;
+        GameConfigurator _gameConfigurator;
+        GameConfigurationsCleaner _configurationsCleaner;
+        GameLoopManager _gameLoopManager;
 
-        //Game Objects
-        Ball ball;
-        Brick brick;
-        Paddle paddle;
-
-        void GameLoop();        
     
     public:
         Game(GameConfigurator gameConfigurator, 
              GameConfigurationsCleaner configurationsCleaner,
-             GraphicsRenderer GraphicsRenderer,
-             BricksRepository bricksRepository,
-             Ball ball,
-             Brick brick,
-             Paddle paddle);
+             GameLoopManager gameLoopManager);
 
         ~Game();
         void Run();   
