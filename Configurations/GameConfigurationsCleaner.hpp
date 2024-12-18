@@ -6,6 +6,8 @@
 
 class GameConfigurationsCleaner
 {
+    
+
     public:
         GameConfigurationsCleaner();
         ~GameConfigurationsCleaner();

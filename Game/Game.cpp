@@ -18,17 +18,12 @@ Game::~Game()
 
 void Game::Run()
  {
-    if (!_gameConfigurator.InitializeSDL(window, context, SCREEN_WIDTH, SCREEN_HEIGHT)) 
+    if (!_gameConfigurator.IsConfigured(window, context, SCREEN_WIDTH, SCREEN_HEIGHT)) 
     {
-        std::cerr << "Failed to initialize SDL" << std::endl;
-        return;
-    }
-
-    if (!_gameConfigurator.IntializeOpenGL(SCREEN_WIDTH, SCREEN_HEIGHT)) 
-    {
-        std::cerr << "Failed to initialize OpenGL" << std::endl;
+        std::cerr << "Failed to configure." << std::endl;
         _configurationsCleaner.CleanUp(window, context);
         return;
     }
+    
     _gameLoopManager.Start(SCREEN_WIDTH);
 }

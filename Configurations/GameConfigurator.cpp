@@ -4,6 +4,13 @@ GameConfigurator::GameConfigurator() {}
 
 GameConfigurator::~GameConfigurator() {}
 
+
+bool GameConfigurator::IsConfigured(SDL_Window *window, SDL_GLContext context, int width, int height)
+{
+    return InitializeSDL(window, context, width, height) && 
+           IntializeOpenGL(window, context, width, height);
+}
+
 bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, int width, int height)
 {
      if (SDL_Init(SDL_INIT_VIDEO) < 0) 
@@ -33,7 +40,7 @@ bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, 
     return true;
 }
 
-bool GameConfigurator::IntializeOpenGL(int width, int height)
+bool GameConfigurator::IntializeOpenGL(SDL_Window *window, SDL_GLContext context, int width, int height)
 {
     glewExperimental = GL_TRUE;
 
