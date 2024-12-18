@@ -17,7 +17,7 @@ GameLoopManager::~GameLoopManager() {}
 
 void GameLoopManager::Start(int screenWidth)
 {
-    _bricksRepository.CreateBricks(_brick);
+    _bricksRepository.CreateBricks();
     
     bool isRunning = true;
     SDL_Event event;

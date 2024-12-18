@@ -16,11 +16,14 @@ void ShapesDrawer::DrawRectangle(float x, float y, float width, float height)
 
 void ShapesDrawer::DrawBricks(const std::vector <Brick> &bricks)
 {
+    const int BrickWidth = 60;
+    const int BrickHeight = 20;
+
     for (const auto &brick : bricks) 
         if (brick.getState()) 
         {
             glColor3f(1.0f, 0.0f, 0.0f);
-            DrawRectangle(brick.getX(), brick.getY(), brick.getWidth(), brick.getHeight());
+            DrawRectangle(brick.getX(), brick.getY(), BrickWidth, BrickHeight);
         }
     
 }

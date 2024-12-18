@@ -9,27 +9,7 @@ Brick::Brick(float x,  float y, bool isActive)
     _isActive = isActive;
 }
 
-Brick::~Brick() {};
-
-int Brick::getWidth() const
-{
-    return _brickWidth;
-}
-
-int Brick::getHeight() const
-{
-    return _brickHeight;
-}
-
-int Brick::getRowsCount() const
-{
-    return _numberOfRows;
-}
-
-int Brick::getColsCount() const
-{
-    return _numberOfColumns;
-}
+Brick::~Brick() {}
 
 float Brick::getX() const
 {

@@ -3,18 +3,22 @@
 BricksRepository::BricksRepository() {};
 BricksRepository::~BricksRepository() {};
 
-void BricksRepository::CreateBricks(const Brick &input)
+void BricksRepository::CreateBricks()
 {
-    float startX = 50;
-    float startY = 50;
+    const int BrickWidth = 60;
+    const int BrickHeight = 20;  
+    const int NumberOfRows = 5;
+    const int NumberOfColumns = 10;
+    const float StartX = 50;
+    const float StartY = 50;
 
-    for (int row = 0; row < input.getRowsCount(); ++row) 
-        for (int col = 0; col < input.getColsCount(); ++col) 
+    for (int row = 0; row < NumberOfRows; ++row) 
+        for (int col = 0; col < NumberOfColumns; ++col) 
         {
-            Brick brick = {startX + col * (input.getWidth() + 10), startY + row * (input.getHeight() + 10), true};
+            Brick brick = {StartX + col * (BrickWidth + 10), StartY + row * (BrickHeight + 10), true};
             _bricks.push_back(brick);
         }
-}
+}   
 
 std::vector<Brick> BricksRepository::getBricks() const
 {
