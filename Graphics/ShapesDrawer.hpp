@@ -12,6 +12,7 @@ class ShapesDrawer
         ShapesDrawer() = delete;
 
         static void DrawRectangle(float x, float y, float width, float height);
+        static void DrawCircle(float centerX, float centerY, float radius, int segments);
         static void DrawBricks(const std::vector <Brick> &bricks);
 
 };

@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
+#include <cmath>
 
 #include "ShapesDrawer.hpp"
 
@@ -27,3 +28,24 @@ void ShapesDrawer::DrawBricks(const std::vector <Brick> &bricks)
         }
     
 }
+
+void ShapesDrawer::DrawCircle(float centerX, float centerY, float radius, int segments)
+{   
+    const double  PI = 3.141592653589793;
+    
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(centerX, centerY);
+
+    for(int i=0; i<segments; i++)
+    {
+        float angle = 2.0f * PI * i/segments;
+        float x = radius * cos(angle);
+        float y = radius * sin(angle);
+        glVertex2f(centerX + x, centerY + y);
+    }
+
+    glEnd();
+
+}
+
+
