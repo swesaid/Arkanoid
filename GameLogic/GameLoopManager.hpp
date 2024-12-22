@@ -31,7 +31,7 @@ class GameLoopManager
                         CollisionHandler collisionHandler);
         
         ~GameLoopManager();
-        void Start(int screenWidth);
+        void Start(int screenWidth, int screenHeight);
 };
 
 

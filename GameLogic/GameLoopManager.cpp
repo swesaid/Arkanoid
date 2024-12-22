@@ -17,10 +17,11 @@ GameLoopManager::GameLoopManager(Ball ball,
 }
 GameLoopManager::~GameLoopManager() {}
 
-void GameLoopManager::Start(int screenWidth)
+void GameLoopManager::Start(int screenWidth, int screenHeight)
 {
     _bricksRepository.CreateBricks();
     std::vector<Brick> bricks = _bricksRepository.getBricks();
+    int bricksCount = bricks.size();
     
     bool isRunning = true;
     SDL_Event event;
@@ -41,6 +42,19 @@ void GameLoopManager::Start(int screenWidth)
             }
         }
 
+        if(bricksCount == 0)
+        {
+            std::cout << "You won!" << std::endl;
+            isRunning = false;
+            break;
+        }
+        if(_ball.getY() > screenHeight )
+        {
+            std::cout << "You lost :(" << std::endl;
+            isRunning = false;
+            break;
+        }
+
         if (_paddle.getX() < 0) 
             _paddle.setX(0);
         
@@ -50,7 +64,7 @@ void GameLoopManager::Start(int screenWidth)
         _ball.setX(_ball.getX() + _ball.getDX());
         _ball.setY(_ball.getY() + _ball.getDY());
 
-        _collisionHandler.HandleCollisions(_paddle, _ball, bricks);
+        _collisionHandler.HandleCollisions(_paddle, _ball, bricks, bricksCount);
 
         _graphicsRenderer.Render(_paddle, _ball, bricks);
         SDL_Delay(16);

@@ -25,5 +25,5 @@ void Game::Run()
         return;
     }
     
-    _gameLoopManager.Start(_screenWidth);
+    _gameLoopManager.Start(_screenWidth, _screenHeight);
 }

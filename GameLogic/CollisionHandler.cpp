@@ -4,14 +4,14 @@
 CollisionHandler::CollisionHandler() {}
 CollisionHandler::~CollisionHandler() {}
 
-void CollisionHandler::HandleCollisions(Paddle &paddle, Ball &ball, std::vector<Brick> &bricks)
+void CollisionHandler::HandleCollisions(Paddle &paddle, Ball &ball, std::vector<Brick> &bricks, int &bricksCount)
 {
     HandleBallAndPaddleCollision(ball, paddle);
     HandleBallAndWallCollision(ball);
-    HandleBallAndBrickCollision(ball, bricks);
+    HandleBallAndBrickCollision(ball, bricks, bricksCount);
 }
 
-void CollisionHandler::HandleBallAndBrickCollision(Ball &ball, std::vector<Brick> &bricks)
+void CollisionHandler::HandleBallAndBrickCollision(Ball &ball, std::vector<Brick> &bricks, int &bricksCount)
 {
     const int BrickWidth = 60;
     const int BrickHeight = 20;
@@ -26,6 +26,7 @@ void CollisionHandler::HandleBallAndBrickCollision(Ball &ball, std::vector<Brick
         {
             brick.setState(false);
             ball.setDY(-ball.getDY());
+            bricksCount--;
             break;
         }
     }

@@ -9,14 +9,14 @@
 class CollisionHandler
 {
     private:
-        void HandleBallAndBrickCollision(Ball &ball, std::vector<Brick> &bricks);
+        void HandleBallAndBrickCollision(Ball &ball, std::vector<Brick> &bricks, int &bricksCount);
         void HandleBallAndWallCollision(Ball &ball);
         void HandleBallAndPaddleCollision(Ball &ball, Paddle &paddle);
 
     public:
         CollisionHandler();
         ~CollisionHandler();
-        void HandleCollisions(Paddle &paddle, Ball &ball, std::vector<Brick> &bricks);
+        void HandleCollisions(Paddle &paddle, Ball &ball, std::vector<Brick> &bricks, int &bricksCount);
 };
 
 #endif
