@@ -1,9 +1,9 @@
 #ifndef COLLISIONHANDLER_CPP
 #define COLLISIONHANDLER_CPP
 
-#include "Objects/Ball.hpp"
-#include "Objects/Paddle.hpp"
-#include "Data/BricksRepository.hpp"
+#include "Ball.hpp"
+#include "Paddle.hpp"
+#include "BricksRepository.hpp"
 #include <vector>
 
 class CollisionHandler

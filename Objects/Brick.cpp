@@ -1,4 +1,4 @@
-#include "Objects/Brick.hpp"
+#include "Brick.hpp"
 
 Brick::Brick() {};
 

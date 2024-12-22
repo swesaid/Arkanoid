@@ -1,4 +1,4 @@
-#include "Data/BricksRepository.hpp"
+#include "BricksRepository.hpp"
 
 BricksRepository::BricksRepository() {};
 BricksRepository::~BricksRepository() {};

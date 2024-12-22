@@ -5,9 +5,9 @@
 #include <GL/glew.h>
 #include <iostream>
 
-#include "Configurations/GameConfigurator.hpp"
-#include "Configurations/GameConfigurationsCleaner.hpp"
-#include "GameLogic/GameLoopManager.hpp"
+#include "GameConfigurator.hpp"
+#include "GameConfigurationsCleaner.hpp"
+#include "GameLoopManager.hpp"
 
 class Game
 {

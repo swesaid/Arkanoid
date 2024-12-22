@@ -1,4 +1,4 @@
-#include "Configurations/GameConfigurationsCleaner.hpp"
+#include "GameConfigurationsCleaner.hpp"
 
 GameConfigurationsCleaner::GameConfigurationsCleaner() {};
 GameConfigurationsCleaner::~GameConfigurationsCleaner() {};

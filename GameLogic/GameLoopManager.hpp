@@ -3,12 +3,12 @@
 
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
-#include "Objects/Ball.hpp"
-#include "Objects/Brick.hpp"
-#include "Objects/Paddle.hpp"
-#include "Graphics/GraphicsRenderer.hpp"
-#include "Data/BricksRepository.hpp"
-#include "GameLogic/CollisionHandler.hpp"
+#include "Ball.hpp"
+#include "Brick.hpp"
+#include "Paddle.hpp"
+#include "GraphicsRenderer.hpp"
+#include "BricksRepository.hpp"
+#include "CollisionHandler.hpp"
 
 class GameLoopManager
 {

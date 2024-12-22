@@ -1,10 +1,12 @@
 #ifndef GRAPHICSRENDERER_HPP
 #define GRAPHICSRENDERER_HPP
 
+#include <Brick.hpp>
+
 #include "GraphicsRenderer.hpp"
-#include "Objects/Paddle.hpp"
-#include "Objects/Ball.hpp"
-#include "Graphics/ShapesDrawer.hpp"
+#include "Paddle.hpp"
+#include "Ball.hpp"
+#include "ShapesDrawer.hpp"
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 

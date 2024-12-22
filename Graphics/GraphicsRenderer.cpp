@@ -3,7 +3,7 @@
 GraphicsRenderer::GraphicsRenderer() {}
 GraphicsRenderer::~GraphicsRenderer() {}
 
-void GraphicsRenderer::Render(Paddle paddle, Ball ball, const std::vector <Brick> &bricks)
+void GraphicsRenderer::Render(Paddle paddle, Ball ball, const std::vector<Brick> &bricks)
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
