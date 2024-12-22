@@ -23,6 +23,10 @@
 \#*\#
 *.xcworkspace
 *.xcuserdatad
+.idea/workspace.xml
+*.iml
+*.iws
+
 
 # OS-specific files
 .DS_Store
@@ -34,6 +38,10 @@ CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 build/
+cmake-build-*
+*.ninja
+build.ninja
+Testing/
 
 # Logs and temporary files
 *.log
