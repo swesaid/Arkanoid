@@ -10,5 +10,6 @@ void GameConfigurationsCleaner::CleanUp(SDL_Window *window, SDL_GLContext contex
     if (window)
         SDL_DestroyWindow(window);
 
+    TTF_Quit();
     SDL_Quit();
 }

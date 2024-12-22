@@ -1,7 +1,8 @@
 #ifndef GAMECONFIGURATIONSCLEANER_HPP
 #define GAMECONFIGURATIONSCLEANER_HPP
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
+#include <SDL_ttf.h>
 #include <GL/glew.h>
 
 class GameConfigurationsCleaner

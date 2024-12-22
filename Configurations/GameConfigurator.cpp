@@ -7,7 +7,7 @@ GameConfigurator::~GameConfigurator() {}
 bool GameConfigurator::IsConfigured(SDL_Window *window, SDL_GLContext context, int width, int height)
 {
     return InitializeSDL(window, context, width, height) && 
-           IntializeOpenGL(window, context, width, height);
+           IntializeOpenGL(width, height);
 }
 
 bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, int width, int height)
@@ -18,8 +18,17 @@ bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, 
         return false;
     }
 
-    window = SDL_CreateWindow("Arkanoid", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              width, height, SDL_WINDOW_OPENGL);
+    if(TTF_Init() < 0)
+    {
+        std::cerr << "Failed to initialize SDL_ttf: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        return false;
+    }
+
+    window = SDL_CreateWindow("Arkanoid", SDL_WINDOWPOS_CENTERED,
+                                          SDL_WINDOWPOS_CENTERED,
+                                          width, height,
+                                          SDL_WINDOW_OPENGL);
     if (!window) 
     {
         std::cerr << "Failed to create SDL window: " << SDL_GetError() << std::endl;
@@ -39,7 +48,7 @@ bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, 
     return true;
 }
 
-bool GameConfigurator::IntializeOpenGL(SDL_Window *window, SDL_GLContext context, int width, int height)
+bool GameConfigurator::IntializeOpenGL(int width, int height)
 {
     glewExperimental = GL_TRUE;
 
