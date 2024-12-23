@@ -47,6 +47,7 @@ set(SOURCE_FILES
         Data/BricksRepository.cpp
         Configurations/GameConfigurationsCleaner.cpp
         Configurations/GameConfigurator.cpp
+        Graphics/TextRenderer.cpp
 )
 
 # Add the executable

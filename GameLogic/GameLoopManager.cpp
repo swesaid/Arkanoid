@@ -1,36 +1,44 @@
 #include "GameLoopManager.hpp"
 #include <vector>
 
-GameLoopManager::GameLoopManager(Ball ball,
-                                 Brick brick,
-                                 Paddle paddle,
-                                 GraphicsRenderer graphicsRenderer,
-                                 BricksRepository bricksRepository,
-                                 CollisionHandler collisionHandler) 
-{
-    _ball = std::move(ball);
-    _brick = std::move(brick);
-    _paddle = std::move(paddle);
-    _graphicsRenderer = std::move(graphicsRenderer);
-    _bricksRepository = std::move(bricksRepository);
-    _collisionHandler = std::move(collisionHandler);
-}
-GameLoopManager::~GameLoopManager() {}
+GameLoopManager::GameLoopManager(const Ball& ball,
+                                 const Brick& brick,
+                                 const Paddle& paddle,
+                                 const GraphicsRenderer& graphicsRenderer,
+                                 std::shared_ptr<BricksRepository> bricksRepository,
+                                 std::unique_ptr<CollisionHandler> collisionHandler,
+                                 std::unique_ptr<TextRenderer>textRenderer)
+:
+    _ball(ball),
+    _brick(brick),
+    _paddle(paddle),
+    _bricksRepository(bricksRepository),
+    _graphicsRenderer(graphicsRenderer),
+    _collisionHandler(std::move(collisionHandler)),
+    _textRenderer(std::move(textRenderer))
+{}
+
 
 void GameLoopManager::Start(int screenWidth, int screenHeight)
 {
-    _bricksRepository.CreateBricks();
-    std::vector<Brick> bricks = _bricksRepository.getBricks();
+    if(!_textRenderer->Initialize())
+    {
+        std::cerr << "Could not load the font" << TTF_GetError() << std::endl;
+        return;
+    }
+
+    _bricksRepository->CreateBricks();
+    std::vector<Brick> bricks = _bricksRepository->getBricks();
     int bricksCount = bricks.size();
-    
+
     bool isRunning = true;
     SDL_Event event;
 
-    while (isRunning) 
+    while (isRunning)
     {
-        while (SDL_PollEvent(&event)) 
+        while (SDL_PollEvent(&event))
         {
-            if (event.type == SDL_QUIT) 
+            if (event.type == SDL_QUIT)
                 isRunning = false;
 
             else if(event.type == SDL_KEYDOWN)
@@ -55,16 +63,16 @@ void GameLoopManager::Start(int screenWidth, int screenHeight)
             break;
         }
 
-        if (_paddle.getX() < 0) 
+        if (_paddle.getX() < 0)
             _paddle.setX(0);
-        
-        if (_paddle.getX() + _paddle.getWidth() > screenWidth) 
+
+        if (_paddle.getX() + _paddle.getWidth() > screenWidth)
             _paddle.setX(screenWidth - _paddle.getWidth());
 
         _ball.setX(_ball.getX() + _ball.getDX());
         _ball.setY(_ball.getY() + _ball.getDY());
 
-        _collisionHandler.HandleCollisions(_paddle, _ball, bricks, bricksCount);
+        _collisionHandler->HandleCollisions(_paddle, _ball, bricks, bricksCount);
 
         _graphicsRenderer.Render(_paddle, _ball, bricks);
         SDL_Delay(16);

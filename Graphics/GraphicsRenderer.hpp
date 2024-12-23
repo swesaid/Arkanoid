@@ -15,7 +15,7 @@ class GraphicsRenderer
     public:
         GraphicsRenderer();
         ~GraphicsRenderer();
-        void Render(Paddle paddle, Ball ball, const std::vector <Brick> &bricks);
+        void Render(Paddle &paddle, Ball &ball, const std::vector <Brick> &bricks);
 
 };
 

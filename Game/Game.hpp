@@ -2,7 +2,6 @@
 #define GAME_HPP
 
 #include <SDL2/SDL.h>
-#include <GL/glew.h>
 #include <iostream>
 
 #include "GameConfigurator.hpp"
@@ -12,24 +11,26 @@
 class Game
 {
     private:
+
         const int _screenWidth = 800;
         const int _screenHeight = 600;
         SDL_Window* _window = nullptr;
         SDL_GLContext _context = nullptr;
 
         //Dependencies
-        GameConfigurator _gameConfigurator;
-        GameConfigurationsCleaner _configurationsCleaner;
-        GameLoopManager _gameLoopManager;
+        std::shared_ptr<GameConfigurator> _gameConfigurator;
+        std::shared_ptr<GameConfigurationsCleaner> _configurationsCleaner;
+        std::unique_ptr<GameLoopManager> _gameLoopManager;
 
     
     public:
-        Game(GameConfigurator gameConfigurator, 
-             GameConfigurationsCleaner configurationsCleaner,
-             GameLoopManager gameLoopManager);
+
+        Game(std::shared_ptr<GameConfigurator> gameConfigurator,
+             std::shared_ptr<GameConfigurationsCleaner> configurationsCleaner,
+             std::unique_ptr<GameLoopManager> gameLoopManager);
 
         ~Game();
-        void Run();   
+        void Run() const;
 };
 
 #endif
