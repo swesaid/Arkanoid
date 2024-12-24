@@ -7,8 +7,8 @@ void BricksRepository::CreateBricks()
 {
     const int BrickWidth = 60;
     const int BrickHeight = 20;  
-    const int NumberOfRows = 1;
-    const int NumberOfColumns = 1;
+    const int NumberOfRows = 5;
+    const int NumberOfColumns = 10;
     const float StartX = 50;
     const float StartY = 50;
 

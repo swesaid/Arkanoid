@@ -53,17 +53,18 @@ void ShapesDrawer::DrawCircle(SDL_Renderer*& renderer, int centerX, int centerY,
     SDL_Color color = it->second;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 
-    const double  PI = 3.141592653589793;
-    const int segments = 100;
-
-    for (int i = 0; i < segments; ++i)
+    for (int w = 0; w < radius * 2; w++)
     {
-        float angle = 2.0f * PI * i / segments;
-        int x = static_cast<int>(centerX + radius * cos(angle));
-        int y = static_cast<int>(centerY + radius * sin(angle));
-        SDL_RenderDrawPoint(renderer, x, y);
+        for (int h = 0; h < radius * 2; h++)
+        {
+            int dx = radius - w; // Horizontal offset
+            int dy = radius - h; // Vertical offset
+            if ((dx * dx + dy * dy) <= (radius * radius))
+            {
+                SDL_RenderDrawPoint(renderer, centerX + dx, centerY + dy);
+            }
+        }
     }
-
 }
 
 
