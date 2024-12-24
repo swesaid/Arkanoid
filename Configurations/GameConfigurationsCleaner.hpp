@@ -10,7 +10,7 @@ class GameConfigurationsCleaner
     public:
         GameConfigurationsCleaner();
         ~GameConfigurationsCleaner();
-        void CleanUp(SDL_Window *window, SDL_GLContext context);
+        void CleanUp(SDL_Window *window, SDL_Renderer *& renderer);
 };
 
 #endif

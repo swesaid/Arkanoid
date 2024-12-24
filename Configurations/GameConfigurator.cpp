@@ -4,13 +4,12 @@ GameConfigurator::GameConfigurator() {}
 GameConfigurator::~GameConfigurator() {}
 
 
-bool GameConfigurator::IsConfigured(SDL_Window *window, SDL_GLContext context, int width, int height)
+bool GameConfigurator::IsConfigured(SDL_Window *window, SDL_Renderer *&renderer, int width, int height)
 {
-    return InitializeSDL(window, context, width, height) && 
-           IntializeOpenGL(width, height);
+    return InitializeSDL(window, renderer, width, height);
 }
 
-bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, int width, int height)
+bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_Renderer *&renderer, int width, int height)
 {
      if (SDL_Init(SDL_INIT_VIDEO) < 0) 
     {
@@ -28,7 +27,7 @@ bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, 
     window = SDL_CreateWindow("Arkanoid", SDL_WINDOWPOS_CENTERED,
                                           SDL_WINDOWPOS_CENTERED,
                                           width, height,
-                                          SDL_WINDOW_OPENGL);
+                                          SDL_WINDOW_SHOWN);
     if (!window) 
     {
         std::cerr << "Failed to create SDL window: " << SDL_GetError() << std::endl;
@@ -36,31 +35,15 @@ bool GameConfigurator::InitializeSDL(SDL_Window *window, SDL_GLContext context, 
         return false;
     }
 
-    context = SDL_GL_CreateContext(window);
-    if (!context) 
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+    if (!renderer)
     {
-        std::cerr << "Failed to create OpenGL context: " << SDL_GetError() << std::endl;
+        std::cerr << "Failed to create SDL renderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         return false;
     }
-
-    return true;
-}
-
-bool GameConfigurator::IntializeOpenGL(int width, int height)
-{
-    glewExperimental = GL_TRUE;
-
-    if (glewInit() != GLEW_OK) 
-    {
-        std::cerr << "Failed to initialize GLEW" << std::endl;
-        return false;
-    }
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, width, height, 0);
 
     return true;
 }

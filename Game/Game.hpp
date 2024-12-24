@@ -15,7 +15,7 @@ class Game
         const int _screenWidth = 800;
         const int _screenHeight = 600;
         SDL_Window* _window = nullptr;
-        SDL_GLContext _context = nullptr;
+        SDL_Renderer* _renderer = nullptr;
 
         //Dependencies
         std::shared_ptr<GameConfigurator> _gameConfigurator;
@@ -30,7 +30,7 @@ class Game
              std::unique_ptr<GameLoopManager> gameLoopManager);
 
         ~Game();
-        void Run() const;
+        void Run();
 };
 
 #endif

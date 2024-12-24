@@ -1,29 +1,28 @@
 #include "GameLoopManager.hpp"
 #include <vector>
 
-GameLoopManager::GameLoopManager(const Ball& ball,
-                                 const Brick& brick,
-                                 const Paddle& paddle,
-                                 const GraphicsRenderer& graphicsRenderer,
+GameLoopManager::GameLoopManager(const Ball &ball,
+                                 const Brick &brick,
+                                 const Paddle &paddle,
+                                 const GraphicsRenderer &graphicsRenderer,
                                  std::shared_ptr<BricksRepository> bricksRepository,
                                  std::unique_ptr<CollisionHandler> collisionHandler,
-                                 std::unique_ptr<TextRenderer>textRenderer)
-:
-    _ball(ball),
-    _brick(brick),
-    _paddle(paddle),
-    _bricksRepository(bricksRepository),
-    _graphicsRenderer(graphicsRenderer),
-    _collisionHandler(std::move(collisionHandler)),
-    _textRenderer(std::move(textRenderer))
-{}
-
-
-void GameLoopManager::Start(int screenWidth, int screenHeight)
+                                 std::unique_ptr<TextRenderer> textRenderer)
+    : _ball(ball),
+      _brick(brick),
+      _paddle(paddle),
+      _bricksRepository(bricksRepository),
+      _graphicsRenderer(graphicsRenderer),
+      _collisionHandler(std::move(collisionHandler)),
+      _textRenderer(std::move(textRenderer))
 {
-    if(!_textRenderer->Initialize())
+}
+
+void GameLoopManager::Start(SDL_Renderer *& renderer, int screenWidth, int screenHeight)
+{
+    if (!_textRenderer->Initialize())
     {
-        std::cerr << "Could not load the font" << TTF_GetError() << std::endl;
+        std::cerr << "Could not load the font: " << TTF_GetError() << std::endl;
         return;
     }
 
@@ -41,27 +40,35 @@ void GameLoopManager::Start(int screenWidth, int screenHeight)
             if (event.type == SDL_QUIT)
                 isRunning = false;
 
-            else if(event.type == SDL_KEYDOWN)
+            else if (event.type == SDL_KEYDOWN)
             {
-                if(event.key.keysym.sym == SDLK_LEFT)
+                if (event.key.keysym.sym == SDLK_LEFT)
                     _paddle.setX(_paddle.getX() - 20);
-                else if(event.key.keysym.sym == SDLK_RIGHT)
+                else if (event.key.keysym.sym == SDLK_RIGHT)
                     _paddle.setX(_paddle.getX() + 20);
             }
         }
 
-        if(bricksCount == 0)
+        if (bricksCount == 0)
         {
-            std::cout << "You won!" << std::endl;
+            SDL_Color winColor = {255, 255, 255, 255};
+            _textRenderer->RenderTextCentered(renderer, "You Won!", screenWidth, screenHeight, winColor);
+            SDL_RenderPresent(renderer);
+            SDL_Delay(2000);
             isRunning = false;
             break;
         }
-        if(_ball.getY() > screenHeight )
+
+        if (_ball.getY() > screenHeight)
         {
-            std::cout << "You lost :(" << std::endl;
+            SDL_Color loseColor = {255, 255, 255, 255};
+            _textRenderer->RenderTextCentered(renderer, "Game Over :(", screenWidth, screenHeight, loseColor);
+            SDL_RenderPresent(renderer);
+            SDL_Delay(2000);
             isRunning = false;
             break;
         }
+
 
         if (_paddle.getX() < 0)
             _paddle.setX(0);
@@ -74,7 +81,7 @@ void GameLoopManager::Start(int screenWidth, int screenHeight)
 
         _collisionHandler->HandleCollisions(_paddle, _ball, bricks, bricksCount);
 
-        _graphicsRenderer.Render(_paddle, _ball, bricks);
+        _graphicsRenderer.Render(renderer, _paddle, _ball, bricks);
         SDL_Delay(16);
     }
 }

@@ -31,7 +31,7 @@ public:
                     std::unique_ptr<TextRenderer>textRenderer);
 
     ~GameLoopManager() = default;
-    void Start(int screenWidth, int screenHeight);;
+    void Start(SDL_Renderer *& renderer, int screenWidth, int screenHeight);
 };
 
 #endif

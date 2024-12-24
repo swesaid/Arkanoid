@@ -13,9 +13,8 @@ class GameConfigurator
         GameConfigurator();
         ~GameConfigurator();
 
-        bool InitializeSDL(SDL_Window *window, SDL_GLContext context, int width, int height);
-        bool IntializeOpenGL(int width, int height);
-        bool IsConfigured(SDL_Window *window, SDL_GLContext context, int width, int height);
+        bool InitializeSDL(SDL_Window *window, SDL_Renderer *&renderer, int width, int height);
+        bool IsConfigured(SDL_Window *window, SDL_Renderer *&renderer, int width, int height);
 };
 
 #endif
