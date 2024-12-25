@@ -27,6 +27,7 @@ class Ball
         void setY(float ballY);
         void setDY(float ballDY);
         void setDX(float ballDX);
+        void Move();
 
 
 };

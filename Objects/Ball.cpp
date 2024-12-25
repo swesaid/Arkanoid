@@ -47,3 +47,9 @@ void Ball::setDX(float ballDX)
 {
     _ballDX = ballDX;
 }
+
+void Ball::Move()
+{
+    _ballX += _ballDX;
+    _ballY += _ballDY;
+}

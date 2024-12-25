@@ -47,6 +47,7 @@ void GameLoopManager::Start(SDL_Renderer *& renderer, int screenWidth, int scree
         }
 
         GameResult gameResult = _gameResultManager->GetResult(bricksCount, _ball.getY());
+
         if (gameResult != GameResult::None)
         {
             gameResult == GameResult::Win ? _gameResultManager->PrintResult(renderer, "You won! :)") :
@@ -58,8 +59,7 @@ void GameLoopManager::Start(SDL_Renderer *& renderer, int screenWidth, int scree
 
         _collisionHandler->HandlePaddleBounds(_paddle);
 
-        _ball.setX(_ball.getX() + _ball.getDX());
-        _ball.setY(_ball.getY() + _ball.getDY());
+        _ball.Move();
 
         _collisionHandler->HandleCollisions(_paddle, _ball, bricks, bricksCount);
 
