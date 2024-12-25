@@ -34,9 +34,7 @@ void CollisionHandler::HandleBallAndBrickCollision(Ball &ball, std::vector<Brick
 
 void CollisionHandler::HandleBallAndWallCollision(Ball &ball)
 {
-    const int ScreenWidth = 800;
-    
-    if(ball.getX() <= 0 || ball.getX() + ball.getSize() >= ScreenWidth)
+    if(ball.getX() <= 0 || ball.getX() + ball.getSize() >= _screenWidth)
         ball.setDX(-ball.getDX());
     if(ball.getY() <=0)
         ball.setDY(-ball.getDY());
@@ -51,4 +49,13 @@ void CollisionHandler::HandleBallAndPaddleCollision(Ball &ball, Paddle &paddle)
         ball.setDY(-ball.getDY());
         ball.setY(paddle.getY() - ball.getSize());
     }
+}
+
+void CollisionHandler::HandlePaddleBounds(Paddle &paddle)
+{
+    if (paddle.getX() < 0)
+        paddle.setX(0);
+
+    if (paddle.getX() + paddle.getWidth() > _screenWidth)
+        paddle.setX(_screenWidth - paddle.getWidth());
 }

@@ -56,11 +56,7 @@ void GameLoopManager::Start(SDL_Renderer *& renderer, int screenWidth, int scree
         }
 
 
-        if (_paddle.getX() < 0)
-            _paddle.setX(0);
-
-        if (_paddle.getX() + _paddle.getWidth() > screenWidth)
-            _paddle.setX(screenWidth - _paddle.getWidth());
+        _collisionHandler->HandlePaddleBounds(_paddle);
 
         _ball.setX(_ball.getX() + _ball.getDX());
         _ball.setY(_ball.getY() + _ball.getDY());
