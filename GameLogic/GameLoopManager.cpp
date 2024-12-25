@@ -1,4 +1,6 @@
 #include "GameLoopManager.hpp"
+
+#include <GameResultManager.hpp>
 #include <vector>
 
 GameLoopManager::GameLoopManager(const Ball &ball,
@@ -6,25 +8,20 @@ GameLoopManager::GameLoopManager(const Ball &ball,
                                  const Paddle &paddle,
                                  const GraphicsRenderer &graphicsRenderer,
                                  std::shared_ptr<BricksRepository> bricksRepository,
-                                 std::unique_ptr<CollisionHandler> collisionHandler,
-                                 std::unique_ptr<TextRenderer> textRenderer)
+                                 std::shared_ptr<GameResultManager> gameResultManager,
+                                 std::unique_ptr<CollisionHandler> collisionHandler)
     : _ball(ball),
       _brick(brick),
       _paddle(paddle),
-      _bricksRepository(bricksRepository),
       _graphicsRenderer(graphicsRenderer),
-      _collisionHandler(std::move(collisionHandler)),
-      _textRenderer(std::move(textRenderer))
+      _bricksRepository(std::move(bricksRepository)),
+      _gameResultManager(std::move(gameResultManager)),
+      _collisionHandler(std::move(collisionHandler))
 {
 }
 
 void GameLoopManager::Start(SDL_Renderer *& renderer, int screenWidth, int screenHeight)
 {
-    if (!_textRenderer->Initialize())
-    {
-        std::cerr << "Could not load the font: " << TTF_GetError() << std::endl;
-        return;
-    }
 
     _bricksRepository->CreateBricks();
     std::vector<Brick> bricks = _bricksRepository->getBricks();
@@ -49,22 +46,11 @@ void GameLoopManager::Start(SDL_Renderer *& renderer, int screenWidth, int scree
             }
         }
 
-        if (bricksCount == 0)
+        GameResult gameResult = _gameResultManager->GetResult(bricksCount, _ball.getY());
+        if (gameResult != GameResult::None)
         {
-            SDL_Color winColor = {255, 255, 255, 255};
-            _textRenderer->RenderTextCentered(renderer, "You Won!", screenWidth, screenHeight, winColor);
-            SDL_RenderPresent(renderer);
-            SDL_Delay(2000);
-            isRunning = false;
-            break;
-        }
-
-        if (_ball.getY() > screenHeight)
-        {
-            SDL_Color loseColor = {255, 255, 255, 255};
-            _textRenderer->RenderTextCentered(renderer, "Game Over :(", screenWidth, screenHeight, loseColor);
-            SDL_RenderPresent(renderer);
-            SDL_Delay(2000);
+            gameResult == GameResult::Win ? _gameResultManager->PrintResult(renderer, "You won! :)") :
+                                            _gameResultManager->PrintResult(renderer, "You lost! :(");
             isRunning = false;
             break;
         }

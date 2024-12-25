@@ -48,6 +48,7 @@ set(SOURCE_FILES
         Configurations/GameConfigurationsCleaner.cpp
         Configurations/GameConfigurator.cpp
         Graphics/TextRenderer.cpp
+        GameLogic/GameResultManager.cpp
 )
 
 # Add the executable

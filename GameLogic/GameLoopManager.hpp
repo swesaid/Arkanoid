@@ -10,6 +10,7 @@
 #include "BricksRepository.hpp"
 #include "CollisionHandler.hpp"
 #include "TextRenderer.hpp"
+#include "GameResultManager.hpp"
 
 class GameLoopManager {
 private:
@@ -18,17 +19,17 @@ private:
     Paddle _paddle;
     GraphicsRenderer _graphicsRenderer;
     std::shared_ptr<BricksRepository> _bricksRepository;
+    std::shared_ptr<GameResultManager> _gameResultManager;
     std::unique_ptr<CollisionHandler> _collisionHandler;
-    std::unique_ptr<TextRenderer>_textRenderer;
 
 public:
-    GameLoopManager(const Ball& ball,
-                    const Brick& brick,
-                    const Paddle& paddle,
-                    const GraphicsRenderer& graphicsRenderer,
+    GameLoopManager(const Ball &ball,
+                    const Brick &brick,
+                    const Paddle &paddle,
+                    const GraphicsRenderer &graphicsRenderer,
                     std::shared_ptr<BricksRepository> bricksRepository,
-                    std::unique_ptr<CollisionHandler> collisionHandler,
-                    std::unique_ptr<TextRenderer>textRenderer);
+                    std::shared_ptr<GameResultManager> gameResultManager,
+                    std::unique_ptr<CollisionHandler> collisionHandler);
 
     ~GameLoopManager() = default;
     void Start(SDL_Renderer *& renderer, int screenWidth, int screenHeight);
