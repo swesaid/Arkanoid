@@ -25,6 +25,7 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/GameLogic
         ${PROJECT_SOURCE_DIR}/Data
         ${PROJECT_SOURCE_DIR}/Game
+        ${PROJECT_SOURCE_DIR}/PlayerInteraction
 )
 
 # Link directories
@@ -49,6 +50,8 @@ set(SOURCE_FILES
         Configurations/GameConfigurator.cpp
         Graphics/TextRenderer.cpp
         GameLogic/GameResultManager.cpp
+        GameLogic/LevelManager.cpp
+        PlayerInteraction/GraphicalPlayerInteraction.cpp
 )
 
 # Add the executable

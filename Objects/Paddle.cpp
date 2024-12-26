@@ -28,3 +28,9 @@ void Paddle::setX(float paddleX)
     _paddleX = paddleX;
 }
 
+void Paddle::setWidth(int width)
+{
+    _paddleWidth = width;
+}
+
+

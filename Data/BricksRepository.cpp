@@ -12,6 +12,8 @@ void BricksRepository::CreateBricks()
     const float StartX = 50;
     const float StartY = 50;
 
+    _bricks.clear();
+
     for (int row = 0; row < NumberOfRows; ++row)
         for (int col = 0; col < NumberOfColumns; ++col) 
         {

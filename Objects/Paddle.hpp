@@ -19,7 +19,8 @@ class Paddle
         float getX() const;
         float getY() const;
 
-        void setX(float paddleX); 
+        void setX(float paddleX);
+        void setWidth(int width);
 
         
 };
