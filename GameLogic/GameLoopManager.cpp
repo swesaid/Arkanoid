@@ -48,9 +48,9 @@ void GameLoopManager::RunLevel(SDL_Renderer *& renderer, int screenWidth, int sc
     std::vector<Brick> bricks = _bricksRepository->getBricks();
     int bricksCount = bricks.size();
 
-    _graphicalPlayerInteraction->ShowCurrentLevel(renderer);
+    _graphicalPlayerInteraction-> ShowCurrentLevel(renderer);
     _graphicalPlayerInteraction -> ShowCountdown(renderer);
-
+    _graphicalPlayerInteraction -> ShowMessage(renderer, "Good luck!");
 
     bool isRunning = true;
     SDL_Event event;

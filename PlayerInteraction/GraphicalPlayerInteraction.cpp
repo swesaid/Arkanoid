@@ -47,10 +47,16 @@ void GraphicalPlayerInteraction::ShowCountdown(SDL_Renderer *&renderer) const
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Black background
         SDL_RenderClear(renderer);
     }
-
-
-
 }
+
+void GraphicalPlayerInteraction::ShowMessage(SDL_Renderer *&renderer, const std::string &message) const
+{
+    _textRenderer->RenderTextCentered(renderer, message, _screenWidth, _screenHeight, _textColor);
+
+    SDL_RenderPresent(renderer);
+    SDL_Delay(1000);
+}
+
 
 
 
