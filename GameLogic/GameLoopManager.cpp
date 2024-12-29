@@ -48,7 +48,7 @@ void GameLoopManager::RunLevel(SDL_Renderer *& renderer, int screenWidth, int sc
     std::vector<Brick> bricks = _bricksRepository->getBricks();
     int bricksCount = bricks.size();
 
-    _graphicalPlayerInteraction-> ShowCurrentLevel(renderer);
+    _graphicalPlayerInteraction -> ShowCurrentLevel(renderer);
     _graphicalPlayerInteraction -> ShowCountdown(renderer);
     _graphicalPlayerInteraction -> ShowMessage(renderer, "Good luck!");
 
@@ -104,7 +104,6 @@ void GameLoopManager::RunLevel(SDL_Renderer *& renderer, int screenWidth, int sc
 
         _graphicsRenderer.Render(renderer, _paddle, _ball, bricks);
         SDL_Delay(16);
-
     }
 }
 

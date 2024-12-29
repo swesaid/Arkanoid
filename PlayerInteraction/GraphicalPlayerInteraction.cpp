@@ -1,7 +1,5 @@
 #include "GraphicalPlayerInteraction.hpp"
 
-#include <GameResult.hpp>
-
 
 GraphicalPlayerInteraction::GraphicalPlayerInteraction(std::shared_ptr<TextRenderer> textRenderer,
                                                        std::shared_ptr<LevelManager> levelManager):
@@ -12,50 +10,46 @@ GraphicalPlayerInteraction::GraphicalPlayerInteraction(std::shared_ptr<TextRende
 void GraphicalPlayerInteraction::ShowCurrentLevel(SDL_Renderer *&renderer) const
 {
     std::string currentLevel = "Level " + std::to_string(_levelManager->getLevel());
-    _textRenderer->RenderTextCentered(renderer, currentLevel, _screenWidth, _screenHeight, _textColor);
-
-    SDL_RenderPresent(renderer);
-    SDL_Delay(2000);
+    DisplayTextWithEventHandling(renderer, currentLevel, 1000);
 }
 
 void GraphicalPlayerInteraction::ShowGameResult(SDL_Renderer *&renderer, const GameResult &result) const
 {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Black background
-    SDL_RenderClear(renderer);
-
     std::string message = result == GameResult::Win ? "You won :)" :
                                                       "You lost :(";
 
-    _textRenderer->RenderTextCentered(renderer, message, _screenWidth, _screenHeight, _textColor);
-
-
-    SDL_RenderPresent(renderer);
-    SDL_Delay(2000);
+    DisplayTextWithEventHandling(renderer, message, 1000);
 }
 
 void GraphicalPlayerInteraction::ShowCountdown(SDL_Renderer *&renderer) const
 {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Black background
-    SDL_RenderClear(renderer);
-
     for (int countdown = 5; countdown > 0; countdown--)
-    {
-        _textRenderer->RenderTextCentered(renderer, std::to_string(countdown), _screenWidth, _screenHeight, _textColor);
-
-        SDL_RenderPresent(renderer);
-        SDL_Delay(1000);
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Black background
-        SDL_RenderClear(renderer);
-    }
+        DisplayTextWithEventHandling(renderer, std::to_string(countdown), 1500);
 }
 
 void GraphicalPlayerInteraction::ShowMessage(SDL_Renderer *&renderer, const std::string &message) const
 {
-    _textRenderer->RenderTextCentered(renderer, message, _screenWidth, _screenHeight, _textColor);
-
-    SDL_RenderPresent(renderer);
-    SDL_Delay(1000);
+    DisplayTextWithEventHandling(renderer, message, 1000);
 }
+
+void GraphicalPlayerInteraction::DisplayTextWithEventHandling(SDL_Renderer *&renderer, const std::string &message, int durationMs) const
+{
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
+    Uint32 startTime = SDL_GetTicks();
+
+    _textRenderer->RenderTextCentered(renderer, message, _screenWidth, _screenHeight, _textColor);
+    SDL_RenderPresent(renderer);
+
+    SDL_Event event;
+
+    while (SDL_GetTicks() - startTime < durationMs)
+        while (SDL_PollEvent(&event))
+             if (event.type == SDL_QUIT)
+                 exit(0);
+}
+
 
 
 

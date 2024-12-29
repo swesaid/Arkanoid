@@ -17,6 +17,8 @@ class GraphicalPlayerInteraction
         std::shared_ptr<TextRenderer> _textRenderer;
         std::shared_ptr<LevelManager> _levelManager;
 
+        void DisplayTextWithEventHandling(SDL_Renderer *&renderer, const std::string &message, int durationMs) const;
+
     public:
 
         GraphicalPlayerInteraction(std::shared_ptr<TextRenderer> textRenderer,
