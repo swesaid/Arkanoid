@@ -1,8 +1,5 @@
 #include "GameLoopManager.hpp"
 
-#include <GameResultManager.hpp>
-#include <vector>
-
 GameLoopManager::GameLoopManager(const Ball &ball,
                                  const Brick &brick,
                                  const Paddle &paddle,

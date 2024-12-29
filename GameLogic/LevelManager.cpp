@@ -1,6 +1,5 @@
 #include "LevelManager.hpp"
 
-
 LevelManager::LevelManager():
     _level(1)
 {

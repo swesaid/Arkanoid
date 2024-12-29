@@ -2,6 +2,7 @@
 #define GAMELOOPMANAGER_HPP
 
 #include <memory>
+#include <vector>
 
 #include "Ball.hpp"
 #include "Brick.hpp"
@@ -13,6 +14,7 @@
 #include "GameResultManager.hpp"
 #include "LevelManager.hpp"
 #include "GraphicalPlayerInteraction.hpp"
+#include "GameLoopManager.hpp"
 
 class GameLoopManager {
 

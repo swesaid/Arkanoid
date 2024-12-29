@@ -1,9 +1,6 @@
 #ifndef GAMERESULTMANAGER_HPP
 #define GAMERESULTMANAGER_HPP
 
-#include <string>
-
-#include "TextRenderer.hpp"
 #include "GameResult.hpp"
 
 class GameResultManager

@@ -1,7 +1,6 @@
 #ifndef LEVELMANAGER_HPP
 #define LEVELMANAGER_HPP
 
-
 #include "Ball.hpp"
 #include "Paddle.hpp"
 
