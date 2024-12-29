@@ -52,6 +52,7 @@ set(SOURCE_FILES
         GameLogic/GameResultManager.cpp
         GameLogic/LevelManager.cpp
         PlayerInteraction/GraphicalPlayerInteraction.cpp
+        PlayerInteraction/GameStateManager.cpp
 )
 
 # Add the executable

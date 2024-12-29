@@ -15,6 +15,7 @@
 #include "LevelManager.hpp"
 #include "GraphicalPlayerInteraction.hpp"
 #include "GameLoopManager.hpp"
+#include "GameStateManager.hpp"
 
 class GameLoopManager {
 
@@ -31,6 +32,7 @@ class GameLoopManager {
         std::shared_ptr<TextRenderer> _textRenderer;
         std::shared_ptr<LevelManager> _levelManager;
         std::shared_ptr<GraphicalPlayerInteraction> _graphicalPlayerInteraction;
+        std::shared_ptr<GameStateManager> _gameStateManager;
 
     public:
 
@@ -43,7 +45,8 @@ class GameLoopManager {
                     std::shared_ptr<GameResultManager> gameResultManager,
                     std::shared_ptr<TextRenderer> textRenderer,
                     std::shared_ptr<LevelManager> levelManager,
-                    std::shared_ptr<GraphicalPlayerInteraction> graphicalPlayerInteraction);
+                    std::shared_ptr<GraphicalPlayerInteraction> graphicalPlayerInteraction,
+                    std::shared_ptr<GameStateManager> gameStateManager);
 
         ~GameLoopManager() = default;
         void Start(SDL_Renderer *& renderer, int screenWidth, int screenHeight);

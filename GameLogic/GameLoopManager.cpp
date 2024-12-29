@@ -9,7 +9,8 @@ GameLoopManager::GameLoopManager(const Ball &ball,
                                  std::shared_ptr<GameResultManager> gameResultManager,
                                  std::shared_ptr<TextRenderer> textRenderer,
                                  std::shared_ptr<LevelManager> levelManager,
-                                 std::shared_ptr<GraphicalPlayerInteraction> graphicalPlayerInteraction)
+                                 std::shared_ptr<GraphicalPlayerInteraction> graphicalPlayerInteraction,
+                                 std::shared_ptr<GameStateManager> gameStateManager)
     :
       _ball(ball),
       _brick(brick),
@@ -20,7 +21,8 @@ GameLoopManager::GameLoopManager(const Ball &ball,
       _gameResultManager(std::move(gameResultManager)),
       _textRenderer(std::move(textRenderer)),
       _levelManager(std::move(levelManager)),
-      _graphicalPlayerInteraction(std::move(graphicalPlayerInteraction))
+      _graphicalPlayerInteraction(std::move(graphicalPlayerInteraction)),
+      _gameStateManager(std::move(gameStateManager))
 {
 }
 
@@ -54,8 +56,7 @@ void GameLoopManager::RunLevel(SDL_Renderer *& renderer, int screenWidth, int sc
 
     while (isRunning)
     {
-        while (SDL_PollEvent(&event))
-        {
+        while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
             {
                 isRunning = false;
@@ -65,12 +66,21 @@ void GameLoopManager::RunLevel(SDL_Renderer *& renderer, int screenWidth, int sc
 
             else if (event.type == SDL_KEYDOWN)
             {
+                _gameStateManager->HandleEvent(event.key.keysym.sym);
+
+                if (_gameStateManager->GetCurrentState() == GameState::Paused)
+                    continue;
                 if (event.key.keysym.sym == SDLK_LEFT)
                     _paddle.setX(_paddle.getX() - 20);
                 else if (event.key.keysym.sym == SDLK_RIGHT)
                     _paddle.setX(_paddle.getX() + 20);
             }
+        }
 
+        if (_gameStateManager->GetCurrentState() == GameState::Paused)
+        {
+            _graphicalPlayerInteraction->ShowPauseScreen(renderer);
+            continue;
         }
 
         GameResult gameResult = _gameResultManager->GetResult(bricksCount, _ball.getY());

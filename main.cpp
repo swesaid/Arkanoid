@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     auto gameResultManager = std::make_shared<GameResultManager>();
     auto levelManager = std::make_shared<LevelManager>();
     auto graphicalPlayerInteraction = std::make_shared<GraphicalPlayerInteraction>(textRenderer, levelManager);
+    auto gameStateManager = std::make_shared<GameStateManager>();
 
     auto gameLoopManager = std::make_unique<GameLoopManager>(ball, brick, paddle,
                                                              graphicsRenderer,
@@ -24,7 +25,8 @@ int main(int argc, char *argv[])
                                                              std::move(gameResultManager),
                                                              std::move(textRenderer),
                                                              std::move(levelManager),
-                                                             std::move(graphicalPlayerInteraction));
+                                                             std::move(graphicalPlayerInteraction),
+                                                             std::move(gameStateManager));
 
     Game game = Game(gameConfigurator,
                      configurationsCleaner,
