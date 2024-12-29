@@ -26,6 +26,7 @@ class GraphicalPlayerInteraction
 
         void ShowGameResult(SDL_Renderer *&renderer, const GameResult &result) const;
         void ShowCurrentLevel(SDL_Renderer *&renderer) const;
+        void ShowCountdown(SDL_Renderer *&renderer) const;
 };
 
 

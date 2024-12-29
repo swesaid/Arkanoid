@@ -49,6 +49,8 @@ void GameLoopManager::RunLevel(SDL_Renderer *& renderer, int screenWidth, int sc
     int bricksCount = bricks.size();
 
     _graphicalPlayerInteraction->ShowCurrentLevel(renderer);
+    _graphicalPlayerInteraction -> ShowCountdown(renderer);
+
 
     bool isRunning = true;
     SDL_Event event;
@@ -71,6 +73,7 @@ void GameLoopManager::RunLevel(SDL_Renderer *& renderer, int screenWidth, int sc
                 else if (event.key.keysym.sym == SDLK_RIGHT)
                     _paddle.setX(_paddle.getX() + 20);
             }
+
         }
 
         GameResult gameResult = _gameResultManager->GetResult(bricksCount, _ball.getY());
