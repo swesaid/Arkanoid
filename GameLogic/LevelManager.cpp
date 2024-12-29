@@ -1,9 +1,8 @@
 #include "LevelManager.hpp"
 
 
-LevelManager::LevelManager(std::shared_ptr<BricksRepository> bricksRepository):
-    _level(1),
-    _bricksRepository(std::move(bricksRepository))
+LevelManager::LevelManager():
+    _level(1)
 {
 }
 
@@ -19,7 +18,6 @@ void LevelManager::NextLevel()
 
 void LevelManager::ResetLevel(Ball &ball, Paddle &paddle)
 {
-    _bricksRepository->CreateBricks();
     ball.setX(400);
     ball.setY(300);
     ball.setDX(3.0f);

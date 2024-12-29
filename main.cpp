@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     auto collisionHandler = std::make_unique<CollisionHandler>();
     auto textRenderer = std::make_shared<TextRenderer>();
     auto gameResultManager = std::make_shared<GameResultManager>();
-    auto levelManager = std::make_shared<LevelManager>(bricksRepository);
+    auto levelManager = std::make_shared<LevelManager>();
     auto graphicalPlayerInteraction = std::make_shared<GraphicalPlayerInteraction>(textRenderer, levelManager);
 
     auto gameLoopManager = std::make_unique<GameLoopManager>(ball, brick, paddle,
