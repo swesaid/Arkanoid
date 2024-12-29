@@ -30,6 +30,7 @@ class GraphicalPlayerInteraction
         void ShowCurrentLevel(SDL_Renderer *&renderer) const;
         void ShowCountdown(SDL_Renderer *&renderer) const;
         void ShowMessage(SDL_Renderer *&renderer, const std::string &message) const;
+        void ShowPauseScreen(SDL_Renderer *&renderer) const;
 };
 
 
