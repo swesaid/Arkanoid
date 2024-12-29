@@ -48,6 +48,7 @@ This project demonstrates the core mechanics of Arkanoid while offering a strong
 ## **Screenshots**
   
 <img width="800" alt="game" src="https://github.com/user-attachments/assets/b58c0ac0-8671-45ea-b19a-bec37e26af66" />
+<img width="805" alt="game2" src="https://github.com/user-attachments/assets/3f2f387c-02f3-4198-95fa-1665f8bfef54" />
 <img width="792" alt="pause" src="https://github.com/user-attachments/assets/31e56bd3-f2c0-4d2d-ac97-e3d79b48c99e" />
 <img width="803" alt="lost" src="https://github.com/user-attachments/assets/51a50a2c-87fb-44d1-8900-d78d8712ec3f" />
 <img width="799" alt="youwon" src="https://github.com/user-attachments/assets/d1fac15e-dfac-43fe-9828-49589a418ecb" />
